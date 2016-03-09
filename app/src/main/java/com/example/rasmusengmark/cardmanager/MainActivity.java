@@ -13,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ScrollView;
+
+import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -75,12 +78,17 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_mycards) {
 
+            setContentView(R.layout.mycards_main);
+
         } else if (id == R.id.nav_giftcards) {
 
         } else if (id == R.id.nav_account) {
 
         } else if (id == R.id.nav_logout) {
-
+            finish();
+            //Intent intent = new Intent(this, LoginActivity.class);
+            //startActivity(intent);
+            //don't know if we should use finish or startActivity again... need to get login function to work
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
