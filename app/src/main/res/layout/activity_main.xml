@@ -13,6 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <include
+        layout="@layout/mycards_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -22,115 +29,6 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 
-    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent" android:layout_height="match_parent"
-        android:foregroundGravity="center_vertical"
-        android:background="#ffffff"
-        android:id="@+id/scroll_layout">
-
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:columnCount="2"
-            android:layout_gravity="center_horizontal">
-
-            <ImageButton
-                android:layout_width="175dp"
-                android:layout_height="110dp"
-                android:id="@+id/clubmatas"
-                android:layout_row="0"
-                android:layout_column="0"
-                android:src="@drawable/matas"
-                android:scaleType="fitCenter"
-                android:background="#FFFFFF" />
-
-            <ImageButton
-                android:layout_width="175dp"
-                android:layout_height="110dp"
-                android:id="@+id/magasinkort"
-                android:layout_row="0"
-                android:layout_column="1"
-                android:src="@drawable/magasinkort"
-                android:scaleType="fitCenter"
-                android:background="#FFFFFF"/>
-
-            <ImageButton
-                android:layout_width="175dp"
-                android:layout_height="110dp"
-                android:id="@+id/danskebank"
-                android:layout_row="1"
-                android:layout_column="0"
-                android:src="@drawable/danskebank"
-                android:scaleType="fitCenter"
-                android:background="#FFFFFF"/>
-
-            <ImageButton
-                android:layout_width="175dp"
-                android:layout_height="110dp"
-                android:id="@+id/ikeakort"
-                android:layout_row="1"
-                android:layout_column="1"
-                android:src="@drawable/ikea"
-                android:scaleType="fitCenter"
-                android:background="#FFFFFF"/>
-
-            <ImageButton
-                android:layout_width="175dp"
-                android:layout_height="110dp"
-                android:id="@+id/clubjensens"
-                android:layout_row="2"
-                android:layout_column="0"
-                android:src="@drawable/logo"
-                android:scaleType="fitCenter"
-                android:background="#FFFFFF"/>
-
-            <ImageButton
-                android:layout_width="175dp"
-                android:layout_height="110dp"
-                android:id="@+id/nettokort"
-                android:layout_row="2"
-                android:layout_column="1"
-                android:src="@drawable/netto"
-                android:scaleType="fitCenter"
-                android:background="#FFFFFF"/>
-
-            <ImageButton
-                android:layout_width="175dp"
-                android:layout_height="110dp"
-                android:id="@+id/rejsekort"
-                android:layout_row="3"
-                android:layout_column="0"
-                android:src="@drawable/rejsekortgrafik"
-                android:scaleType="fitCenter"
-                android:background="#FFFFFF"/>
-
-            <ImageButton
-                android:layout_width="175dp"
-                android:layout_height="110dp"
-                android:id="@+id/rodeokort"
-                android:layout_row="3"
-                android:layout_column="1"
-                android:src="@drawable/rodeo"
-                android:scaleType="fitCenter"
-                android:background="#FFFFFF"/>
-
-            <ImageButton
-                android:layout_width="175dp"
-                android:layout_height="110dp"
-                android:id="@+id/plus"
-                android:layout_row="4"
-                android:layout_column="0"
-                android:src="@drawable/ic_plus"
-                android:scaleType="fitCenter"
-                android:background="#FFFFFF"/>
-        </GridLayout>
-
-
-
-    </android.support.v4.widget.NestedScrollView>
 
 
 </android.support.v4.widget.DrawerLayout>
