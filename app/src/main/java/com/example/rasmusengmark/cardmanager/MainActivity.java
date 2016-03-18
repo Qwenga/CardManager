@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_mycards) {
 
-            setContentView(R.layout.mycards_main);
+            setContentView(R.layout.my_card);
 
         } else if (id == R.id.nav_giftcards) {
 

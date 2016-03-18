@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:layout_marginTop="@dimen/activity_vertical_margin">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_gravity="center_horizontal" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+                <ImageButton
+                    android:layout_width="175dp"
+                    android:layout_height="110dp"
+                    android:id="@+id/clubmatas"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/matas"
+                    android:scaleType="fitCenter"
+                    android:background="#FFFFFF" />
+
+                <ImageButton
+                    android:layout_width="175dp"
+                    android:layout_height="110dp"
+                    android:id="@+id/magasinkort"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/magasinkort"
+                    android:scaleType="fitCenter"
+                    android:background="#FFFFFF"/>
+
+                <ImageButton
+                    android:layout_width="175dp"
+                    android:layout_height="110dp"
+                    android:id="@+id/danskebank"
+                    android:layout_below="@id/clubmatas"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/danskebank"
+                    android:scaleType="fitCenter"
+                    android:background="#FFFFFF"/>
+
+                <ImageButton
+                    android:layout_width="175dp"
+                    android:layout_height="110dp"
+                    android:id="@+id/ikeakort"
+                    android:layout_below="@id/magasinkort"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ikea"
+                    android:scaleType="fitCenter"
+                    android:background="#FFFFFF"/>
+
+                <ImageButton
+                    android:layout_width="175dp"
+                    android:layout_height="110dp"
+                    android:id="@+id/clubjensens"
+                    android:layout_below="@id/danskebank"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/logo"
+                    android:scaleType="fitCenter"
+                    android:background="#FFFFFF"/>
+
+                <ImageButton
+                    android:layout_width="175dp"
+                    android:layout_height="110dp"
+                    android:id="@+id/nettokort"
+                    android:layout_below="@id/ikeakort"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/netto"
+                    android:scaleType="fitCenter"
+                    android:background="#FFFFFF"/>
+
+                <ImageButton
+                    android:layout_width="175dp"
+                    android:layout_height="110dp"
+                    android:id="@+id/rejsekort"
+                    android:layout_below="@id/clubjensens"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/rejsekortgrafik"
+                    android:scaleType="fitCenter"
+                    android:background="#FFFFFF"/>
+
+                <ImageButton
+                    android:layout_width="175dp"
+                    android:layout_height="110dp"
+                    android:id="@+id/rodeokort"
+                    android:layout_below="@id/nettokort"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/rodeo"
+                    android:scaleType="fitCenter"
+                    android:background="#FFFFFF" />
+
+                <ImageButton
+                    android:layout_width="175dp"
+                    android:layout_height="110dp"
+                    android:id="@+id/plus"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/rejsekort"
+                    android:src="@drawable/ic_plus"
+                    android:scaleType="fitCenter"
+                    android:background="#FFFFFF"/>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
