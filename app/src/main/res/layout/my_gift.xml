@@ -41,7 +41,7 @@
             <ImageButton
                 android:layout_width="175dp"
                 android:layout_height="110dp"
-                android:id="@+id/plus"
+                android:id="@+id/plusgift"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="16dp"
                 android:layout_below="@+id/giftcard"
