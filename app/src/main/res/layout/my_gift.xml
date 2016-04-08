@@ -18,20 +18,20 @@
             <ImageButton
                 android:layout_width="175dp"
                 android:layout_height="110dp"
-                android:id="@+id/clubmatas"
+                android:id="@+id/giftcard"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:src="@drawable/"
+                android:src="@drawable/giftcard"
                 android:scaleType="fitCenter"
                 android:background="#FFFFFF" />
 
             <ImageButton
                 android:layout_width="175dp"
                 android:layout_height="110dp"
-                android:id="@+id/magasinkort"
+                android:id="@+id/magasingift"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/magasinkort"
+                android:src="@drawable/magasingift"
                 android:scaleType="fitCenter"
                 android:background="#FFFFFF"/>
 
@@ -41,7 +41,7 @@
                 android:layout_height="110dp"
                 android:id="@+id/plus"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/rejsekort"
+                android:layout_below="@+id/giftcard"
                 android:src="@drawable/ic_plus"
                 android:scaleType="fitCenter"
                 android:background="#FFFFFF"/>

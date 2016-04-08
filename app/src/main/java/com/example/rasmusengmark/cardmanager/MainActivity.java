@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_giftcards) {
 
+            setContentView(R.layout.activity_second);
+
         } else if (id == R.id.nav_account) {
 
         } else if (id == R.id.nav_logout) {
