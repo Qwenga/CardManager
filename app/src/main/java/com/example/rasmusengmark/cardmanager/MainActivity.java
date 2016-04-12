@@ -112,10 +112,16 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_account) {
 
         } else if (id == R.id.nav_logout) {
-            finish();
-            //Intent intent = new Intent(this, LoginActivity.class);
-            //startActivity(intent);
-            //don't know if we should use finish or startActivity again... need to get login function to work
+
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+            navigationView.getMenu().getItem(3).setChecked(true);
+
+            Intent homescreen = new Intent(this,LoginActivity.class);
+            homescreen.addFlags(getIntent().FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(homescreen);
+            this.finish();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
