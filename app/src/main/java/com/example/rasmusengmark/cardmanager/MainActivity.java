@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 
 import java.util.zip.Inflater;
@@ -35,7 +37,16 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
+
+        ImageButton button= (ImageButton) findViewById(R.id.clubmatas);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setContentView(R.layout.pickedcard_activity);
+            }
+        });
     }
+
+
 
     @Override
     public void onBackPressed() {
