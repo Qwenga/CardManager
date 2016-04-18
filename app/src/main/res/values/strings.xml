@@ -76,5 +76,8 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">Help</string>
+    <string name="google_app_id">AIzaSyCh6XU5VNHnqeZ59g8IguBNSaa_PK0bB7s</string>
+
+
 </resources>
