@@ -1,8 +1,11 @@
 package com.example.rasmusengmark.cardmanager;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -44,8 +47,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
-
-
 
     /**
      * Manipulates the map once available.
