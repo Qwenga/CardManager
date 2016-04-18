@@ -78,6 +78,11 @@ public class MainActivity extends AppCompatActivity
             this.startActivity(intent);
     }
 
+        if (id == R.id.action_help){
+            Intent intent = new Intent(this, MapsActivity.class);
+            this.startActivity(intent);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

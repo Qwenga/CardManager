@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/mapsmaps"
+        layout="@layout/activity_maps"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/text2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/texttitel"
+        android:text="CardManager Inc."
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="40dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text1"
+        android:text="If you need any help please feel free to contract us"
+        android:layout_below="@+id/texttitel"
+        android:layout_alignParentStart="true"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textcontact"
+        android:text="Contact Info:"
+        android:textSize="30dp"
+        android:layout_below="@+id/text1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text2"
+        android:text="Phonenumber: 0045 12 34 56 78\nE-mail: card@manager.com\nAddress: Howitzvej 60, 2000 Frederiksberg\nCountry: Denmark"
+        android:textSize="20dp"
+        android:layout_below="@+id/textcontact"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>
