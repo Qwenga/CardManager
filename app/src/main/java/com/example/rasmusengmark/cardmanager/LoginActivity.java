@@ -3,6 +3,7 @@ package com.example.rasmusengmark.cardmanager;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -63,10 +64,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    //Getting to create user panel
+    private Button createUser;
+    private Context context;
+    public static SQLiteAdapter dbHandler;
+    private Long nextId;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //Access to the database
+        context = this;
+        dbHandler = new SQLiteAdapter(context);
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -94,6 +107,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        //Setting up the button and actions
+        toCreateUserPanel();
     }
 
     private void populateAutoComplete() {
@@ -350,6 +366,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    // Method to set up the the button that jumps to create user panel
+    public void toCreateUserPanel(){
+        createUser = (Button) findViewById(R.id.btnCreateUserPanel);
+        createUser.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CreateUserActivity.class);
+                if (nextId != null) {
+                    intent.putExtra("nextId", nextId);
+                }
+                startActivity(intent);
+            }
+        });
     }
 }
 
