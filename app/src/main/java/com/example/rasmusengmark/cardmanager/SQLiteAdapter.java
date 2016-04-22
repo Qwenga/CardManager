@@ -3,30 +3,30 @@ package com.example.rasmusengmark.cardmanager;
 /**
  * Created by Mikkel on 19-04-2016.
  */
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
-public class SQLiteAdapter extends SQLiteOpenHelper {
+public class SQLiteAdapter {
 
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 1;
     // Database Name
-    private static final String DATABASE_NAME = "cardManager";
+    public static final String DATABASE_NAME = "CardManager";
     // Contacts table name
-    private static final String TABLE_NAME = "Users";
+    public static final String TABLE_NAME = "Users";
     // Users Table Columns names
-    private static final String USER_ID = "id";
-    private static final String USER_NAME = "name";
-    private static final String USER_EMAIL = "email";
+    public static final String USER_ID = "id";
+    public static final String USER_NAME = "name";
+    public static final String USER_EMAIL = "email";
 
     public static final String PREFERENCES_DB = "PreferencesDb";
 
-    private SQLiteHelper dbHelper;
+    private SQLiteHelper sqLiteHelper;
     private SQLiteDatabase sqLiteDatabase;
     private Context context;
 
@@ -52,9 +52,9 @@ public class SQLiteAdapter extends SQLiteOpenHelper {
 
     public long create(User user) {
         ContentValues values = new ContentValues();
-        values.put(PERSON_ID,id);
-        values.put(PERSON_NAME, person.getName());
-        values.put(PERSON_AGE,person.getAge());
+        values.put(USER_ID,id);
+        values.put(USER_NAME, user.getName());
+        values.put(USER_EMAIL,user.getEmail());
 
         sqLiteDatabase.insert(TABLE_NAME,null,values);
         SharedPreferences.Editor editor = preferences.edit();
@@ -67,28 +67,28 @@ public class SQLiteAdapter extends SQLiteOpenHelper {
     }
 
     public Cursor readAll() {
-        String[] columns = new String[]{PERSON_ID, PERSON_NAME, PERSON_AGE};
+        String[] columns = new String[]{USER_ID, USER_NAME, USER_EMAIL};
         //return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         return sqLiteDatabase.query(TABLE_NAME, columns, null, null, null, null, null);
         //(Table_name, columns, where, where args, group by, order by, having)
     }
 
-    public boolean update(Long personId, Person person) {
+    public boolean update(Long userId, User user) {
         ContentValues values = new ContentValues();
-        values.put(PERSON_NAME, person.getName());
-        values.put(PERSON_AGE, person.getAge());
+        values.put(USER_NAME, user.getName());
+        values.put(USER_EMAIL, user.getEmail());
 
-        String whereClause = PERSON_ID + " = ?";
-        String[] whereArgs = new String[]{personId.toString()};
+        String whereClause = USER_ID + " = ?";
+        String[] whereArgs = new String[]{userId.toString()};
 
         int numberOfRowsUpdated = sqLiteDatabase.update(TABLE_NAME, values, whereClause, whereArgs);
 
         return (numberOfRowsUpdated == 1);
     }
 
-    public boolean delete(Long personId) {
-        String whereClause = PERSON_ID + " = ?";
-        String[] whereArgs = new String[]{personId.toString()};
+    public boolean delete(Long userId) {
+        String whereClause = USER_ID + " = ?";
+        String[] whereArgs = new String[]{userId.toString()};
         int numberOfRowsUpdated = sqLiteDatabase.delete(TABLE_NAME, whereClause, whereArgs);
 
         return (numberOfRowsUpdated == 1);

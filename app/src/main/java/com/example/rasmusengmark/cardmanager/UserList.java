@@ -8,6 +8,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_ID;
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_NAME;
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_EMAIL;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,16 +25,16 @@ public class UserList extends BaseAdapter {
 
     private Context context;
 
-    private SQLiteAdapter dbHandler;
+    private SQLiteAdapter dbAdapter;
 
 
     public UserList(Context context) {
         this.context = context;
 
-        dbHandler = LoginActivity.dbHandler;
-        dbHandler.open();
+        dbAdapter = LoginActivity.dbHandler;
+        dbAdapter.open();
 
-        Cursor cursor = dbHandler.readAll();
+        Cursor cursor = dbAdapter.readAll();
 
         cursor.moveToFirst();
 
@@ -37,12 +42,12 @@ public class UserList extends BaseAdapter {
             User user = new User();
             user.setId(cursor.getLong(cursor.getColumnIndex(USER_ID)));
             user.setName(cursor.getString(cursor.getColumnIndex(USER_NAME)));
-            user.setEmail(cursor.getInt(cursor.getColumnIndex(USER_EMAIL)));
+            user.setEmail(cursor.getString(cursor.getColumnIndex(USER_EMAIL)));
             users.add(user);
         }
         while (cursor.moveToNext());
 
-        dbHandler.close();
+        dbAdapter.close();
     }
 
 
@@ -67,11 +72,11 @@ public class UserList extends BaseAdapter {
         User user;
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.person_list_item, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.my_accountinfo, parent, false);
             holder = new ViewHolder();
             holder.textViewId = (TextView) convertView.findViewById(R.id.textViewId);
             holder.textViewName = (TextView) convertView.findViewById(R.id.textViewName);
-            holder.textViewEmail = (TextView) convertView.findViewById(R.id.textViewAge);
+            holder.textViewEmail = (TextView) convertView.findViewById(R.id.textViewEmail);
 
             convertView.setTag(holder);
             user = getItem(position);

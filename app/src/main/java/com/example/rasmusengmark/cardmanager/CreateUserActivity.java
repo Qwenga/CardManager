@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class CreateUserActivity extends AppCompatActivity {
 
     Context context;
-    public static SQLiteAdapter dbHandler;
+    public static SQLiteAdapter dbAdapter;
 
     private Button btnCreateUser;
     private EditText editTextName;
@@ -27,7 +27,7 @@ public class CreateUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_user);
         context = this;
 
-        dbHandler = new SQLiteAdapter(context);
+        dbAdapter = new SQLiteAdapter(context);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,12 +55,12 @@ public class CreateUserActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                dbHandler.open();
+                dbAdapter.open();
                 User user = new User();
                 user.setName(editTextName.getText().toString());
                 user.setEmail(editTextEmail.getText().toString());
-                dbHandler.create(user);
-                dbHandler.close();
+                dbAdapter.create(user);
+                dbAdapter.close();
 
                 Toast.makeText(context, "User created", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(context, MainActivity.class));
