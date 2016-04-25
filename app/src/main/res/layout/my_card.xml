@@ -80,7 +80,9 @@
                     android:src="@drawable/netto"
                     android:scaleType="fitCenter"
                     android:background="#FFFFFF"/>
-
+/**
+            hej
+            */
                 <ImageButton
                     android:layout_width="175dp"
                     android:layout_height="110dp"

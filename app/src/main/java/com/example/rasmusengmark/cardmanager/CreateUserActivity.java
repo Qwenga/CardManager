@@ -62,7 +62,7 @@ public class CreateUserActivity extends AppCompatActivity {
                 dbAdapter.create(user);
                 dbAdapter.close();
 
-                Toast.makeText(context, "User created", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, user.getName() + ", your user were successfully created", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(context, MainActivity.class));
             }
         });

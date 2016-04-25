@@ -1,5 +1,6 @@
 package com.example.rasmusengmark.cardmanager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,9 +14,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private User user;
+
 
 
 
@@ -125,6 +130,25 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_account) {
 
+            setContentView(R.layout.activity_third);
+
+           //Toast.makeText(getApplicationContext(), user.getName(), Toast.LENGTH_SHORT).show();
+
+
+            ListView listViewPersons = (ListView) findViewById(R.id.listViewPersons);
+            listViewPersons.setAdapter(new UserList(this));
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.setDrawerListener(toggle);
+            toggle.syncState();
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+            navigationView.getMenu().getItem(1).setChecked(true);
 
 
         } else if (id == R.id.nav_logout) {
