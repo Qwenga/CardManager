@@ -7,7 +7,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,9 +19,15 @@ public class CreateUserActivity extends AppCompatActivity {
     Context context;
     public static SQLiteAdapter dbAdapter;
 
+    private AutoCompleteTextView mEmailView;
+    private EditText mPasswordView;
     private Button btnCreateUser;
-    private EditText editTextName;
     private EditText editTextEmail;
+    private EditText editTextPassword;
+    private EditText editTextFirstName;
+    private EditText editTextLastName;
+    private EditText editTextAge;
+    private EditText editTextCpr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +53,12 @@ public class CreateUserActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextEmail = (EditText) findViewById(R.id.editTextAge);
+        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextFirstName = (EditText) findViewById(R.id.editTextFirstName);
+        editTextLastName = (EditText) findViewById(R.id.editTextLastName);
+        editTextAge = (EditText) findViewById(R.id.editTextAge);
+        editTextCpr = (EditText) findViewById(R.id.editTextCpr);
         btnCreateUser = (Button) findViewById(R.id.btnCreateUser);
     }
 
@@ -58,7 +70,12 @@ public class CreateUserActivity extends AppCompatActivity {
                 dbAdapter.open();
                 User user = new User();
 
-                user.setName(editTextName.getText().toString());
+                user.setPassword(editTextPassword.getText().toString());
+                user.setFirstName(editTextFirstName.getText().toString());
+                user.setLastName(editTextLastName.getText().toString());
+                user.setAge(Integer.parseInt(editTextAge.getText().toString()));
+                user.setCpr(editTextCpr.getText().toString());
+
                 if (isEmailValid(editTextEmail.getText().toString())) {
                     user.setEmail(editTextEmail.getText().toString());
                 }
@@ -75,18 +92,73 @@ public class CreateUserActivity extends AppCompatActivity {
             }
         });
     }
+/**
+    private void attemptCreate() {
+        if (mAuthTask != null) {
+            return;
+        }
 
+        // Reset errors.
+        mEmailView.setError(null);
+        mPasswordView.setError(null);
+
+        // Store values at the time of the login attempt.
+        String email = mEmailView.getText().toString();
+        String password = mPasswordView.getText().toString();
+
+        boolean cancel = false;
+        View focusView = null;
+
+        // Check for a valid password, if the user entered one.
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+            mPasswordView.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView;
+            cancel = true;
+        }
+
+        // Check for a valid email address.
+        if (TextUtils.isEmpty(email)) {
+            mEmailView.setError(getString(R.string.error_field_required));
+            focusView = mEmailView;
+            cancel = true;
+        } else if (!isEmailValid(email)) {
+            mEmailView.setError(getString(R.string.error_invalid_email));
+            focusView = mEmailView;
+            cancel = true;
+        }
+
+        if (cancel) {
+            // There was an error; don't attempt login and focus the first
+            // form field with an error.
+            focusView.requestFocus();
+        } else {
+            // Show a progress spinner, and kick off a background task to
+            // perform the user login attempt.
+            showProgress(true);
+            mAuthTask = new UserLoginTask(email, password);
+            mAuthTask.execute((Void) null);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            this.finish();
+        }
+    }
+ */
     private boolean isEmailValid(String email) {
         if (email.length() < 6){ // X@X.XX as minimum
             return false;
         }
-        //else if (!email.contains("@")) {
-       //     return false;
-      //  }
+        else if (!email.contains("@")) {
+            return false;
+        }
         return true;
     }
 
     private boolean isPasswordValid(String password) {
+        //TODO: Replace this with your own logic
+        return password.length() > 4;
+    }
+
+    private boolean isFirstNameValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
     }

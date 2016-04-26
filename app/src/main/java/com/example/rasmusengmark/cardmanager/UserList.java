@@ -9,9 +9,12 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_ID;
-import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_NAME;
 import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_EMAIL;
-
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_PASSWORD;
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_FIRSTNAME;
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_LASTNAME;
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_AGE;
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_CPR;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,17 +43,18 @@ public class UserList extends BaseAdapter {
         do {
             User user = new User();
             user.setId(cursor.getLong(cursor.getColumnIndex(USER_ID)));
-            user.setName(cursor.getString(cursor.getColumnIndex(USER_NAME)));
             user.setEmail(cursor.getString(cursor.getColumnIndex(USER_EMAIL)));
+            user.setPassword(cursor.getString(cursor.getColumnIndex(USER_PASSWORD)));
+            user.setFirstName(cursor.getString(cursor.getColumnIndex(USER_FIRSTNAME)));
+            user.setLastName(cursor.getString(cursor.getColumnIndex(USER_LASTNAME)));
+            user.setAge(cursor.getInt(cursor.getColumnIndex(USER_AGE)));
+            user.setCpr(cursor.getString(cursor.getColumnIndex(USER_CPR)));
             users.add(user);
         }
         while (cursor.moveToNext());
 
         dbAdapter.close();
     }
-
-
-
 
     @Override
     public int getCount() {
@@ -76,15 +80,23 @@ public class UserList extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.my_accountinfo, parent, false);
             holder = new ViewHolder();
             holder.textViewId = (TextView) convertView.findViewById(R.id.textViewId);
-            holder.textViewName = (TextView) convertView.findViewById(R.id.textViewName);
             holder.textViewEmail = (TextView) convertView.findViewById(R.id.textViewEmail);
+            holder.textViewPassword = (TextView) convertView.findViewById(R.id.textViewPassword);
+            holder.textViewFirstName = (TextView) convertView.findViewById(R.id.textViewFirstName);
+            holder.textViewLastName = (TextView) convertView.findViewById(R.id.textViewLastName);
+            holder.textViewAge = (TextView) convertView.findViewById(R.id.textViewAge);
+            holder.textViewCpr = (TextView) convertView.findViewById(R.id.textViewCpr);
 
             convertView.setTag(holder);
             user = getItem(position);
 
             holder.textViewId.setText(user.getId().toString());
-            holder.textViewName.setText(user.getName());
             holder.textViewEmail.setText(user.getEmail().toString());
+            holder.textViewPassword.setText(user.getCpr());
+            holder.textViewFirstName.setText(user.getFirstName());
+            holder.textViewLastName.setText(user.getLastName());
+            holder.textViewAge.setText(user.getAge());
+            holder.textViewCpr.setText(user.getCpr());
 
         }
         else {
@@ -103,7 +115,12 @@ public class UserList extends BaseAdapter {
 
     static class ViewHolder {
         TextView textViewId;
-        TextView textViewName;
         TextView textViewEmail;
+        TextView textViewPassword;
+        TextView textViewFirstName;
+        TextView textViewLastName;
+        TextView textViewAge;
+        TextView textViewCpr;
+
     }
 }

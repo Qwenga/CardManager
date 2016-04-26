@@ -7,8 +7,12 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.TABLE_NAME;
 import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_ID;
-import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_NAME;
 import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_EMAIL;
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_PASSWORD;
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_FIRSTNAME;
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_LASTNAME;
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_AGE;
+import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_CPR;
 
 /**
  * Created by Mikkel on 22-04-2016.
@@ -18,8 +22,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     private static final String SCRIPT_CREATE_DATABASE = "CREATE TABLE "
             + TABLE_NAME + " (" + USER_ID + " NUMBER PRIMARY KEY,"
-            + USER_NAME + " TEXT NOT NULL,"
-            + USER_EMAIL + " NUMBER NOT NULL)"; //SKAL DEN TJEKKE DET?
+            + USER_EMAIL + " TEXT NOT NULL,"
+            + USER_PASSWORD + " TEXT NOT NULL,"
+            + USER_FIRSTNAME + " TEXT NOT NULL,"
+            + USER_LASTNAME + " TEXT NOT NULL,"
+            + USER_AGE + " NUMBER NOT NULL,"
+            + USER_CPR + " TEXT NOT NULL)";
 
     public SQLiteHelper (Context context, String name, CursorFactory factory, int version ) {
         super(context,name,factory,version);

@@ -83,8 +83,12 @@
 
     // Strings for account information
     <string name="accountId">ID: </string>
-    <string name="accountName">Name: </string>
     <string name="accountEmail">E-mail: </string>
+    <string name="accountPassword">Password: </string>
+    <string name="accountFirstName">First name: </string>
+    <string name="accountLastName">Last name: </string>
+    <string name="accountAge">Age: </string>
+    <string name="accountCpr">CPR number: </string>
 
 
 </resources>

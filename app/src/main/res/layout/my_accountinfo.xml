@@ -26,25 +26,11 @@
         android:layout_alignBaseline="@id/textViewIdLabel" />
 
     <TextView
-        android:id="@+id/textViewNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/accountName"
-        android:layout_below="@id/textViewIdLabel"/>
-
-    <TextView
-        android:id="@+id/textViewName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_toRightOf="@id/textViewNameLabel"
-        android:layout_alignBaseline="@id/textViewNameLabel"/>
-
-    <TextView
         android:id="@+id/textViewEmailLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/accountEmail"
-        android:layout_below="@id/textViewNameLabel"/>
+        android:layout_below="@id/textViewId"/>
 
     <TextView
         android:id="@+id/textViewEmail"
@@ -52,6 +38,76 @@
         android:layout_height="wrap_content" 
         android:layout_toRightOf="@id/textViewEmailLabel"
         android:layout_alignBaseline="@id/textViewEmailLabel"/>
+
+    <TextView
+        android:id="@+id/textViewPasswordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/accountPassword"
+        android:layout_below="@id/textViewEmailLabel"/>
+
+    <TextView
+        android:id="@+id/textViewPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textViewPasswordLabel"
+        android:layout_alignBaseline="@id/textViewPasswordLabel"/>
+
+    <TextView
+        android:id="@+id/textViewFirstNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/accountFirstName"
+        android:layout_below="@id/textViewPasswordLabel"/>
+
+    <TextView
+        android:id="@+id/textViewFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textViewFirstNameLabel"
+        android:layout_alignBaseline="@id/textViewFirstNameLabel"/>
+
+    <TextView
+        android:id="@+id/textViewLastNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/accountLastName"
+        android:layout_below="@id/textViewFirstNameLabel"/>
+
+    <TextView
+        android:id="@+id/textViewLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textViewLastNameLabel"
+        android:layout_alignBaseline="@id/textViewLastNameLabel"/>
+
+    <TextView
+        android:id="@+id/textViewCprLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/accountCpr"
+        android:layout_below="@id/textViewLastNameLabel"/>
+
+    <TextView
+        android:id="@+id/textViewCpr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textViewCprLabel"
+        android:layout_alignBaseline="@id/textViewCprLabel"/>
+
+    <TextView
+        android:id="@+id/textViewAgeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/accountAge"
+        android:layout_below="@id/textViewCprLabel"/>
+
+    <TextView
+        android:id="@+id/textViewAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textViewAgeLabel"
+        android:layout_alignBaseline="@id/textViewAgeLabel"/>
 
     </RelativeLayout>
 </LinearLayout>

@@ -14,30 +14,76 @@
 
 
     <EditText
-        android:id="@+id/editTextName"
+        android:id="@+id/editTextEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="31dp"
         android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName" >
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/btnCreateUser">
 
         <requestFocus />
     </EditText>
 
     <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_alignTop="@+id/editTextEmail"
+        android:layout_toEndOf="@+id/editTextEmail"
+        android:layout_marginStart="49dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editTextFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextEmail"
+        android:layout_below="@+id/editTextEmail"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="First name"
+        android:inputType="textPersonName"
+        android:layout_toStartOf="@+id/btnCreateUser" />
+
+    <EditText
+        android:id="@+id/editTextLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Last name"
+        android:inputType="textPersonName"
+        android:layout_alignTop="@+id/editTextFirstName"
+        android:layout_alignStart="@+id/editTextPassword" />
+
+    <EditText
         android:id="@+id/editTextAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextName"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editTextName"
-        android:layout_marginTop="30dp"
         android:ems="10"
-        android:hint="E-mail"
-        android:inputType="number" />
+        android:hint="Age"
+        android:inputType="number"
+        android:layout_alignTop="@+id/editTextCpr"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/editTextPassword" />
+
+    <EditText
+        android:id="@+id/editTextCpr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="CPR-Number"
+        android:inputType="textLongMessage"
+        android:layout_above="@+id/btnCreateUser"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="27dp"
+        android:layout_alignStart="@+id/editTextLastName" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -47,4 +93,5 @@
         android:id="@+id/btnCreateUser"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

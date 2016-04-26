@@ -21,8 +21,14 @@ public class SQLiteAdapter {
     public static final String TABLE_NAME = "Users";
     // Users Table Columns names
     public static final String USER_ID = "id";
-    public static final String USER_NAME = "name";
     public static final String USER_EMAIL = "email";
+    public static final String USER_PASSWORD = "password";
+    public static final String USER_FIRSTNAME = "firstname";
+    public static final String USER_LASTNAME = "lastname";
+    public static final String USER_AGE = "age";
+    public static final String USER_CPR = "cpr";
+
+
 
     public static final String PREFERENCES_DB = "PreferencesDb";
 
@@ -53,8 +59,12 @@ public class SQLiteAdapter {
     public long create(User user) {
         ContentValues values = new ContentValues();
         values.put(USER_ID,id);
-        values.put(USER_NAME, user.getName());
         values.put(USER_EMAIL,user.getEmail());
+        values.put(USER_PASSWORD,user.getPassword());
+        values.put(USER_FIRSTNAME, user.getFirstName());
+        values.put(USER_LASTNAME, user.getLastName());
+        values.put(USER_AGE, user.getAge());
+        values.put(USER_CPR, user.getCpr());
 
         sqLiteDatabase.insert(TABLE_NAME,null,values);
         SharedPreferences.Editor editor = preferences.edit();
@@ -67,7 +77,7 @@ public class SQLiteAdapter {
     }
 
     public Cursor readAll() {
-        String[] columns = new String[]{USER_ID, USER_NAME, USER_EMAIL};
+        String[] columns = new String[]{USER_ID, USER_EMAIL, USER_PASSWORD, USER_FIRSTNAME, USER_LASTNAME, USER_AGE, USER_CPR };
         //return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         return sqLiteDatabase.query(TABLE_NAME, columns, null, null, null, null, null);
         //(Table_name, columns, where, where args, group by, order by, having)
@@ -75,8 +85,12 @@ public class SQLiteAdapter {
 
     public boolean update(Long userId, User user) {
         ContentValues values = new ContentValues();
-        values.put(USER_NAME, user.getName());
         values.put(USER_EMAIL, user.getEmail());
+        values.put(USER_PASSWORD, user.getPassword());
+        values.put(USER_FIRSTNAME, user.getFirstName());
+        values.put(USER_LASTNAME, user.getLastName());
+        values.put(USER_AGE, user.getAge());
+        values.put(USER_CPR, user.getCpr());
 
         String whereClause = USER_ID + " = ?";
         String[] whereArgs = new String[]{userId.toString()};

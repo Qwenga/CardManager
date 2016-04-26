@@ -12,8 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -21,6 +23,8 @@ public class MainActivity extends AppCompatActivity
 
     private SQLiteAdapter dbHandler;
     private Context context;
+
+    private TextView textViewEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,10 +150,15 @@ public class MainActivity extends AppCompatActivity
             navigationView.setNavigationItemSelectedListener(this);
             navigationView.getMenu().getItem(1).setChecked(true);
 
-            UserList userList = new UserList(context);
-            int test = userList.getCount();
-            Toast.makeText(context, "Person added" + test, Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(context, MainActivity.class));
+
+ UserList userList = new UserList(context);
+  int test = userList.getCount();
+User user = new User();
+            String email = user.getEmail();
+            textViewEmail = (TextView) findViewById(R.id.textViewEmail);
+            textViewEmail.setText("lort");
+
+            Toast.makeText(context, "Person added " + test + "_" + email + "_", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_logout) {
