@@ -27,7 +27,6 @@ public class UserList extends BaseAdapter {
 
     private SQLiteAdapter dbAdapter;
 
-
     public UserList(Context context) {
         this.context = context;
 
@@ -49,6 +48,8 @@ public class UserList extends BaseAdapter {
 
         dbAdapter.close();
     }
+
+
 
 
     @Override

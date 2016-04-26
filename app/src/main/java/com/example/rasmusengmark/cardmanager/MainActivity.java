@@ -19,15 +19,17 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private User user;
-
-
-
+    private SQLiteAdapter dbHandler;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        context = this;
+        dbHandler = LoginActivity.dbHandler;
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -132,12 +134,6 @@ public class MainActivity extends AppCompatActivity
 
             setContentView(R.layout.activity_third);
 
-           //Toast.makeText(getApplicationContext(), user.getName(), Toast.LENGTH_SHORT).show();
-
-
-            ListView listViewPersons = (ListView) findViewById(R.id.listViewPersons);
-            listViewPersons.setAdapter(new UserList(this));
-
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
@@ -149,6 +145,11 @@ public class MainActivity extends AppCompatActivity
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
             navigationView.getMenu().getItem(1).setChecked(true);
+
+            UserList userList = new UserList(context);
+            int test = userList.getCount();
+            Toast.makeText(context, "Person added" + test, Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(context, MainActivity.class));
 
 
         } else if (id == R.id.nav_logout) {

@@ -57,15 +57,38 @@ public class CreateUserActivity extends AppCompatActivity {
             public void onClick(View v) {
                 dbAdapter.open();
                 User user = new User();
+
                 user.setName(editTextName.getText().toString());
-                user.setEmail(editTextEmail.getText().toString());
+                if (isEmailValid(editTextEmail.getText().toString())) {
+                    user.setEmail(editTextEmail.getText().toString());
+                }
+                else{
+                    Toast.makeText(context, "FEJL", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(context, LoginActivity.class));
+                }
+
                 dbAdapter.create(user);
                 dbAdapter.close();
 
-                Toast.makeText(context, user.getName() + ", your user were successfully created", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(context, MainActivity.class));
+                Toast.makeText(context, "your user were successfully created", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(context, LoginActivity.class));
             }
         });
+    }
+
+    private boolean isEmailValid(String email) {
+        if (email.length() < 6){ // X@X.XX as minimum
+            return false;
+        }
+        //else if (!email.contains("@")) {
+       //     return false;
+      //  }
+        return true;
+    }
+
+    private boolean isPasswordValid(String password) {
+        //TODO: Replace this with your own logic
+        return password.length() > 4;
     }
 
 }

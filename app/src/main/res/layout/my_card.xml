@@ -8,115 +8,154 @@
         android:layout_height="wrap_content"
         android:id="@+id/scrollView1"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="70dp">
 
-        <RelativeLayout
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-                <ImageButton
-                    android:layout_width="175dp"
-                    android:layout_height="110dp"
-                    android:id="@+id/clubmatas"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="16dp"
-                    android:src="@drawable/matas"
-                    android:scaleType="fitCenter"
-                    android:background="#FFFFFF" />
+            <ImageButton
+                android:layout_width="350dp"
+                android:layout_height="220dp"
+                android:id="@+id/clubmatas"
+                android:src="@drawable/matas"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="10dp"
 
-                <ImageButton
-                    android:layout_width="175dp"
-                    android:layout_height="110dp"
-                    android:id="@+id/magasinkort"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="16dp"
-                    android:src="@drawable/magasinkort"
-                    android:scaleType="fitCenter"
-                    android:background="#FFFFFF"/>
-
-                <ImageButton
-                    android:layout_width="175dp"
-                    android:layout_height="110dp"
-                    android:id="@+id/danskebank"
-                    android:layout_below="@id/clubmatas"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="16dp"
-                    android:src="@drawable/danskebank"
-                    android:scaleType="fitCenter"
-                    android:background="#FFFFFF"/>
-
-                <ImageButton
-                    android:layout_width="175dp"
-                    android:layout_height="110dp"
-                    android:id="@+id/ikeakort"
-                    android:layout_below="@id/magasinkort"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="16dp"
-                    android:src="@drawable/ikea"
-                    android:scaleType="fitCenter"
-                    android:background="#FFFFFF"/>
-
-                <ImageButton
-                    android:layout_width="175dp"
-                    android:layout_height="110dp"
-                    android:id="@+id/clubjensens"
-                    android:layout_below="@id/danskebank"
-                    android:layout_marginLeft="16dp"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/logo"
-                    android:scaleType="fitCenter"
-                    android:background="#FFFFFF"/>
-
-                <ImageButton
-                    android:layout_width="175dp"
-                    android:layout_height="110dp"
-                    android:id="@+id/nettokort"
-                    android:layout_below="@id/ikeakort"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="16dp"
-                    android:src="@drawable/netto"
-                    android:scaleType="fitCenter"
-                    android:background="#FFFFFF"/>
-/**
-            hej
-            */
-                <ImageButton
-                    android:layout_width="175dp"
-                    android:layout_height="110dp"
-                    android:id="@+id/rejsekort"
-                    android:layout_below="@id/clubjensens"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="16dp"
-                    android:src="@drawable/rejsekortgrafik"
-                    android:scaleType="fitCenter"
-                    android:background="#FFFFFF"/>
-
-                <ImageButton
-                    android:layout_width="175dp"
-                    android:layout_height="110dp"
-                    android:id="@+id/rodeokort"
-                    android:layout_below="@id/nettokort"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="16dp"
-                    android:src="@drawable/rodeo"
-                    android:scaleType="fitCenter"
-                    android:background="#FFFFFF" />
-
-                <ImageButton
-                    android:layout_width="175dp"
-                    android:layout_height="110dp"
-                    android:id="@+id/pluscard"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_below="@+id/rejsekort"
-                    android:src="@drawable/ic_plus"
-                    android:scaleType="fitCenter"
-                    android:background="#FFFFFF"/>
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal" />
 
 
-        </RelativeLayout>
+            <ImageButton
+                android:layout_width="350dp"
+                android:layout_height="220dp"
+                android:id="@+id/magasinkort"
+                android:src="@drawable/magasinkort"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="10dp"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal"/>
+
+            <ImageButton
+                android:layout_width="350dp"
+                android:layout_height="220dp"
+                android:id="@+id/danskebank"
+                android:src="@drawable/danskebank"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="10dp"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal"/>
+
+            <ImageButton
+                android:layout_width="350dp"
+                android:layout_height="220dp"
+                android:id="@+id/ikeakort"
+                android:src="@drawable/ikea"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="10dp"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageButton
+                android:layout_width="350dp"
+                android:layout_height="220dp"
+                android:id="@+id/clubjensens"
+                android:src="@drawable/logo"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="10dp"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageButton
+                android:layout_width="350dp"
+                android:layout_height="220dp"
+                android:id="@+id/nettokort"
+                android:src="@drawable/netto"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="10dp"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageButton
+                android:layout_width="350dp"
+                android:layout_height="220dp"
+                android:id="@+id/rejsekort"
+                android:src="@drawable/rejsekortgrafik"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="10dp"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageButton
+                android:layout_width="350dp"
+                android:layout_height="220dp"
+                android:id="@+id/rodeokort"
+                android:src="@drawable/rodeo"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="10dp"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageButton
+                android:layout_width="350dp"
+                android:layout_height="220dp"
+                android:id="@+id/pluscard"
+                android:src="@drawable/ic_plus"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:layout_marginRight="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="10dp"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal" />
+
+
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>
