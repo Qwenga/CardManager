@@ -144,7 +144,7 @@
                 android:layout_width="350dp"
                 android:layout_height="220dp"
                 android:id="@+id/pluscard"
-                android:src="@drawable/ic_plus"
+                android:src="@drawable/addcard"
                 android:scaleType="fitCenter"
                 android:background="#FFFFFF"
                 android:layout_marginRight="1dp"
