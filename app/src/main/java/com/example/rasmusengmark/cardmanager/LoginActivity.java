@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
@@ -82,11 +83,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         context = this;
         dbHandler = new SQLiteAdapter(context);
 
-
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
         mPasswordView = (EditText) findViewById(R.id.password);
+
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -99,6 +100,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "We have sent you an e-mail with your password", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
         //Setting up the button and actions
         toCreateUserPanel();
     }
@@ -188,21 +198,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             userList = new UserList(context);
             showProgress(true);
             Long currentID = userList.verifyAccount(email, password);
-            if(!(currentID == 0)) {
+            if(!(currentID == 0)) { // If user input is correct
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("userID", currentID);
-                Toast.makeText(context, "You have logged in successfully with ID: " + currentID, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "You have logged in successfully", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
                 this.finish();
             }
-            else{
+            else{ // If wrong user input
                 showProgress(false);
                 mPasswordView.setText("");
                 mPasswordView.setError(getString(R.string.error_wrong_input));
                 mEmailView.setError(getString(R.string.error_wrong_input));
                 focusView = mPasswordView;
                 focusView.requestFocus();
-                Toast.makeText(context, "Wrong E-mail or Password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Wrong e-mail or password", Toast.LENGTH_SHORT).show();
             }
         }
     }

@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity
         userList = new UserList(this);
 
        currentID = getIntent().getExtras().getLong("userID"); //Getting the ID for the user logged in
-        Toast.makeText(context, "ID IN MAINACTIVITY CLASS: " + currentID, Toast.LENGTH_LONG).show();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

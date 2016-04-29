@@ -91,27 +91,37 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
-                android:layout_gravity="center_horizontal"
                 android:textStyle="bold" />
 
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_toRightOf="@id/email_sign_in_button"
+                android:src="@android:drawable/ic_dialog_email"
+                android:layout_gravity="right" />
+
             <Button
+                android:id="@+id/btnCreateUserPanel"
                 style="?android:textAppearanceSmall"
                 android:layout_width="250dp"
                 android:layout_height="60dp"
                 android:text="@string/action_create_user"
-                android:id="@+id/btnCreateUserPanel"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal"
+
                 android:textStyle="bold"/>
 
             <ImageView
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:src="@drawable/logoone"
+                android:id="@+id/imgViewLogoLogin"
                 android:layout_below="@+id/btnCreateUser"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="35dp"/>
+
+
 
         </LinearLayout>
     </ScrollView>
