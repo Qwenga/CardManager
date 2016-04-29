@@ -10,23 +10,36 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.rasmusengmark.cardmanager.CreateUserActivity"
-    tools:showIn="@layout/activity_create_user">
+    tools:showIn="@layout/activity_create_user"
+    android:background="#ffffff">
 
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/view3"
+        android:layout_marginTop="30dp">
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
         android:ems="10"
         android:hint="E-mail"
-        android:inputType="textEmailAddress"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/btnCreateUser">
+        android:inputType="textEmailAddress">
 
         <requestFocus />
     </EditText>
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/view3"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/view4">
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -34,23 +47,38 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPassword"
-        android:layout_alignTop="@+id/editTextEmail"
-        android:layout_toEndOf="@+id/editTextEmail"
-        android:layout_marginStart="49dp">
+        android:inputType="textPassword">
     </EditText>
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view3"
+        android:layout_alignParentStart="true"
+        android:id="@+id/view5"
+        android:layout_marginTop="30dp">
 
     <EditText
         android:id="@+id/editTextFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextEmail"
-        android:layout_below="@+id/editTextEmail"
-        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="First name"
-        android:inputType="textPersonName"
-        android:layout_toStartOf="@+id/btnCreateUser" />
+        android:inputType="textPersonName" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view3"
+        android:layout_alignEnd="@+id/view4"
+        android:id="@+id/view6"
+        android:layout_marginTop="30dp">
 
     <EditText
         android:id="@+id/editTextLastName"
@@ -58,9 +86,18 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Last name"
-        android:inputType="textPersonName"
-        android:layout_alignTop="@+id/editTextFirstName"
-        android:layout_alignStart="@+id/editTextPassword" />
+        android:inputType="textPersonName" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/view2"
+        android:layout_below="@+id/view5"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp">
 
     <EditText
         android:id="@+id/editTextAge"
@@ -68,10 +105,17 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Age"
-        android:inputType="number"
-        android:layout_alignTop="@+id/editTextCpr"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/editTextPassword" />
+        android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/view"
+        android:layout_alignTop="@+id/view2"
+        android:layout_alignStart="@+id/view6">
 
     <EditText
         android:id="@+id/editTextCpr"
@@ -79,19 +123,27 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="CPR Number"
-        android:inputType="number"
-        android:layout_above="@+id/btnCreateUser"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="27dp"
-        android:layout_alignStart="@+id/editTextLastName" />
+        android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
         android:text="Create User"
         android:id="@+id/btnCreateUser"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"/>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/logoone"
+        android:layout_below="@+id/btnCreateUser"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"/>
 
 </RelativeLayout>

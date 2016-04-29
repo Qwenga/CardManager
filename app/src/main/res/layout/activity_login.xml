@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.rasmusengmark.cardmanager.LoginActivity">
+    tools:context="com.example.rasmusengmark.cardmanager.LoginActivity"
+    android:background="#ffffff">
 
     <!-- Login progress -->
     <ProgressBar
@@ -30,9 +31,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome to CardManager"
+                android:layout_gravity="center_horizontal"
+                android:textSize="36dp"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="We are here to make you're live easier and yor wallet lighter, by taking all of you're cards out of you're wallet and into you're phone."
+                android:layout_gravity="center_horizontal"
+                android:textSize="20dp"
+                android:layout_marginTop="15dp"/>
+
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
 
                 <AutoCompleteTextView
                     android:id="@+id/email"
@@ -66,22 +85,31 @@
             <Button
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
+                android:layout_gravity="center_horizontal"
                 android:textStyle="bold" />
 
             <Button
                 style="?android:textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
                 android:text="@string/action_create_user"
                 android:id="@+id/btnCreateUserPanel"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:src="@drawable/logoone"
+                android:layout_below="@+id/btnCreateUser"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="35dp"/>
 
         </LinearLayout>
     </ScrollView>

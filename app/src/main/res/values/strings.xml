@@ -21,9 +21,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_settings">Settings</string>
-
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
@@ -86,13 +83,13 @@
     <string name="title_activity_create_user">CreateUser</string>
 
     // Strings for account information
-    <string name="accountId">ID: </string>
-    <string name="accountEmail">E-mail: </string>
-    <string name="accountPassword">Password: </string>
-    <string name="accountFirstName">First name: </string>
-    <string name="accountLastName">Last name: </string>
-    <string name="accountAge">Age: </string>
-    <string name="accountCpr">CPR number: </string>
+    <string name="accountId">ID:</string>
+    <string name="accountEmail">E-mail:</string>
+    <string name="accountPassword">Password:</string>
+    <string name="accountFirstName">First name:</string>
+    <string name="accountLastName">Last name:</string>
+    <string name="accountAge">Age:</string>
+    <string name="accountCpr">CPR number:</string>
 
 
 </resources>

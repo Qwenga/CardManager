@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity
     private TextView textViewAge;
     private TextView textViewCpr;
 
+    private TextView textViewSideEmail;
+    private TextView textViewSideName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         context = this;
         dbHandler = LoginActivity.dbHandler;
+        userList = new UserList(this);
 
        currentID = getIntent().getExtras().getLong("userID"); //Getting the ID for the user logged in
         Toast.makeText(context, "ID IN MAINACTIVITY CLASS: " + currentID, Toast.LENGTH_LONG).show();
@@ -60,6 +64,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
+
+
 
         ImageButton button= (ImageButton) findViewById(R.id.clubmatas);
         button.setOnClickListener(new View.OnClickListener() {
@@ -95,11 +101,6 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            this.startActivity(intent);
-    }
 
         if (id == R.id.action_help){
             Intent intent = new Intent(this, MapsActivity.class);
@@ -116,6 +117,9 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+       // User currentUser2 = userList.getCurrentAccount(currentID); // Getting the user that is logged in now
+        //setSideBarUser(currentUser2); //Passes it to viewAccount() that will set the text box
+
         if (id == R.id.nav_mycards) {
 
             setContentView(R.layout.activity_main);
@@ -131,6 +135,7 @@ public class MainActivity extends AppCompatActivity
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
             navigationView.getMenu().getItem(0).setChecked(true);
+
 
         } else if (id == R.id.nav_giftcards) {
 
@@ -194,6 +199,20 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+   /** public void setSideBarUser(User user){
+
+        Toast.makeText(context, "email: " + user.getEmail() + "name: " + user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_LONG).show();
+
+        textViewSideEmail = (TextView) findViewById(R.id.email_drawer_lol);
+        textViewSideName = (TextView) findViewById(R.id.name_drawer_lol);
+
+        textViewSideEmail.setText("testemail");
+        //textViewSideName.setText("testname");
+
+        user.getEmail()
+        user.getFirstName() + " " + user.getLastName()
+    }
+**/
     public void viewAccount(User user){
         btnDeleteUser = (Button) findViewById(R.id.btnDeleteUser);
         textViewEmail = (TextView) findViewById(R.id.textViewEmail);
@@ -202,6 +221,7 @@ public class MainActivity extends AppCompatActivity
         textViewLastName = (TextView) findViewById(R.id.textViewLastName);
         textViewAge = (TextView) findViewById(R.id.textViewAge);
         textViewCpr = (TextView) findViewById(R.id.textViewCpr);
+
 
         textViewEmail.setText(user.getEmail());
         textViewPassword.setText(user.getPassword());

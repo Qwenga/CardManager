@@ -3,120 +3,166 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content" android:layout_marginTop="@dimen/activity_vertical_margin">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
+        android:id="@+id/account_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Account Information"
+        android:textSize="36dp"
+        android:layout_above="@+id/textViewEmail"
+        android:layout_alignStart="@+id/btnDeleteUser"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"/>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
     android:padding="10dp"
-    android:layout_marginTop="60dp">
+    android:layout_marginTop="20dp">
 
-    <TextView
+        <TextView
         android:id="@+id/textViewIdLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/accountId"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textViewId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textViewIdLabel"
-        android:layout_alignBaseline="@id/textViewIdLabel" />
+        android:layout_alignBaseline="@id/textViewIdLabel"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/textViewEmailLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/accountEmail"
-        android:layout_below="@id/textViewId"/>
+        android:layout_below="@id/textViewId"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" 
         android:layout_toRightOf="@id/textViewEmailLabel"
-        android:layout_alignBaseline="@id/textViewEmailLabel"/>
+        android:layout_alignBaseline="@id/textViewEmailLabel"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/textViewPasswordLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/accountPassword"
-        android:layout_below="@id/textViewEmailLabel"/>
+        android:layout_below="@id/textViewEmailLabel"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textViewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textViewPasswordLabel"
-        android:layout_alignBaseline="@id/textViewPasswordLabel"/>
+        android:layout_alignBaseline="@id/textViewPasswordLabel"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/textViewFirstNameLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/accountFirstName"
-        android:layout_below="@id/textViewPasswordLabel"/>
+        android:layout_below="@id/textViewPasswordLabel"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textViewFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textViewFirstNameLabel"
-        android:layout_alignBaseline="@id/textViewFirstNameLabel"/>
+        android:layout_alignBaseline="@id/textViewFirstNameLabel"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/textViewLastNameLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/accountLastName"
-        android:layout_below="@id/textViewFirstNameLabel"/>
+        android:layout_below="@id/textViewFirstNameLabel"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textViewLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textViewLastNameLabel"
-        android:layout_alignBaseline="@id/textViewLastNameLabel"/>
+        android:layout_alignBaseline="@id/textViewLastNameLabel"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/textViewCprLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/accountCpr"
-        android:layout_below="@id/textViewLastNameLabel"/>
+        android:layout_below="@id/textViewLastNameLabel"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textViewCpr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textViewCprLabel"
-        android:layout_alignBaseline="@id/textViewCprLabel"/>
+        android:layout_alignBaseline="@id/textViewCprLabel"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/textViewAgeLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/accountAge"
-        android:layout_below="@id/textViewCprLabel"/>
+        android:layout_below="@id/textViewCprLabel"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textViewAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textViewAgeLabel"
-        android:layout_alignBaseline="@id/textViewAgeLabel"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete Account"
-        android:id="@+id/btnDeleteUser"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignBaseline="@id/textViewAgeLabel"
+        android:textSize="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete Account"
+            android:id="@+id/btnDeleteUser"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/textViewAgeLabel"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            style="?android:textAppearanceSmall" />
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/logoone"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/btnDeleteUser"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"/>
+
     </RelativeLayout>
+
 
 
 </LinearLayout>
