@@ -16,21 +16,17 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -69,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     //Getting to create user panel
     private Button createUser;
     private Context context;
-    public static SQLiteAdapter dbHandler;
+    public static SQLiteAdapter dbAdapter;
     public UserList userList;
     private Long nextId;
 
@@ -81,7 +77,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         //Access to the database
         context = this;
-        dbHandler = new SQLiteAdapter(context);
+        dbAdapter = new SQLiteAdapter(context);
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -109,8 +105,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         .setAction("Action", null).show();
             }
         });
-        //Setting up the button and actions
-        toCreateUserPanel();
+
+       // createAdminAccount();
+        toCreateUserPanel(); //Setting up the button and actions
     }
 
     private void populateAutoComplete() {
@@ -321,5 +318,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
     }
 
+    public void createAdminAccount(){
+        if((userList = new UserList(context)) == null) {
+            dbAdapter.open();
+            User user = new User();
+
+            user.setId(1L);
+            user.setEmail("admin");
+            user.setPassword("admin");
+            user.setFirstName("admin");
+            user.setLastName("nimda");
+            user.setCpr("1010101010");
+            user.setAge(100);
+
+            dbAdapter.create(user);
+            dbAdapter.close();
+        }
+    }
 }
 

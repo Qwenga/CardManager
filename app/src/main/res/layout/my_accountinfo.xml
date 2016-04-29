@@ -71,6 +71,7 @@
         android:id="@+id/textViewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="textPassword"
         android:layout_toRightOf="@id/textViewPasswordLabel"
         android:layout_alignBaseline="@id/textViewPasswordLabel"
         android:textSize="20dp" />

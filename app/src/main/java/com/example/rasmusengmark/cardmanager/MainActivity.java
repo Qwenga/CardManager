@@ -13,12 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -47,7 +43,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         context = this;
-        dbHandler = LoginActivity.dbHandler;
+        dbHandler = LoginActivity.dbAdapter;
         userList = new UserList(this);
 
        currentID = getIntent().getExtras().getLong("userID"); //Getting the ID for the user logged in
@@ -203,7 +199,7 @@ public class MainActivity extends AppCompatActivity
         Toast.makeText(context, "email: " + user.getEmail() + "name: " + user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_LONG).show();
 
         textViewSideEmail = (TextView) findViewById(R.id.email_drawer_lol);
-        textViewSideName = (TextView) findViewById(R.id.name_drawer_lol);
+        textViewSideName = (TextView) findViewById(R.id.name_drawer_lol); <!---- DISSE TO VÆRDIER BLIVER NULL, DE KAN IKKE FINDE drawer_lol ->
 
         textViewSideEmail.setText("testemail");
         //textViewSideName.setText("testname");

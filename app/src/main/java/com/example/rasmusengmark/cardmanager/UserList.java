@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_ID;
 import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_EMAIL;
@@ -34,10 +33,11 @@ public class UserList extends BaseAdapter {
     public UserList(Context context) {
         this.context = context;
 
-        dbAdapter = LoginActivity.dbHandler;
+        dbAdapter = LoginActivity.dbAdapter;
         dbAdapter.open();
 
         Cursor cursor = dbAdapter.readAll();
+
 
         cursor.moveToFirst();
 
