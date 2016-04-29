@@ -81,7 +81,7 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_maps">Help</string>
     <string name="google_app_id">AIzaSyCh6XU5VNHnqeZ59g8IguBNSaa_PK0bB7s</string>
-    <string name="title_activity_create_user">CreateUser</string>
+    <string name="title_activity_create_user">Create User</string>
 
     // Strings for account information
     <string name="accountId">ID:</string>
