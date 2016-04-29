@@ -19,8 +19,6 @@ public class CreateUserActivity extends AppCompatActivity {
     Context context;
     public static SQLiteAdapter dbAdapter;
 
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
     private Button btnCreateUser;
     private EditText editTextEmail;
     private EditText editTextPassword;
@@ -60,6 +58,13 @@ public class CreateUserActivity extends AppCompatActivity {
         editTextAge = (EditText) findViewById(R.id.editTextAge);
         editTextCpr = (EditText) findViewById(R.id.editTextCpr);
         btnCreateUser = (Button) findViewById(R.id.btnCreateUser);
+
+        editTextEmail.setError(null);
+        editTextPassword.setError(null);
+        editTextFirstName.setError(null);
+        editTextLastName.setError(null);
+        editTextAge.setError(null);
+        editTextCpr.setError(null);
     }
 
     private void initListeners() {
@@ -67,66 +72,59 @@ public class CreateUserActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                dbAdapter.open();
-                User user = new User();
 
-                user.setPassword(editTextPassword.getText().toString());
-                user.setFirstName(editTextFirstName.getText().toString());
-                user.setLastName(editTextLastName.getText().toString());
-                user.setAge(Integer.parseInt(editTextAge.getText().toString()));
-                user.setCpr(editTextCpr.getText().toString());
+                String email =  editTextEmail.getText().toString();
+                String password = editTextPassword.getText().toString();
+                String firstname =  editTextFirstName.getText().toString();
+                String lastname =  editTextLastName.getText().toString();
+                String cpr = editTextCpr.getText().toString();
+               // int age = Integer.parseInt(editTextAge.getText().toString());
+                int age = 10;
 
-                if (isEmailValid(editTextEmail.getText().toString())) {
-                    user.setEmail(editTextEmail.getText().toString());
-                }
-                else{
-                    Toast.makeText(context, "FEJL", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(context, LoginActivity.class));
-                }
-
-                dbAdapter.create(user);
-                dbAdapter.close();
-
-                Toast.makeText(context, "your user were successfully created", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(context, LoginActivity.class));
+                validateInput(email, password, firstname, lastname, cpr, age);
             }
         });
     }
-/**
-    private void attemptCreate() {
-        if (mAuthTask != null) {
-            return;
-        }
 
-        // Reset errors.
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
-
-        // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
-
+    public void validateInput(String email, String password, String firstname, String lastname, String cpr, int age){
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
+        // Check for a valid CPR-number.
+        if (!isCprValid(cpr)) {
+            editTextCpr.setError(getString(R.string.error_invalid_cpr));
+            focusView = editTextCpr;
             cancel = true;
         }
-
+        // Check for a valid last name
+        if (!isNameValid(lastname)) {
+            editTextLastName.setError(getString(R.string.error_invalid_name));
+            focusView = editTextLastName;
+            cancel = true;
+        }
+        // Check for a valid first name.
+        if (!isNameValid(firstname)) {
+            editTextFirstName.setError(getString(R.string.error_invalid_name));
+            focusView = editTextFirstName;
+            cancel = true;
+        }
+        // Check for a valid password, if the user entered one.
+        if (!isPasswordValid(password)) {
+            editTextPassword.setError(getString(R.string.error_invalid_password));
+            focusView = editTextPassword;
+            cancel = true;
+        }
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
+            editTextEmail.setError(getString(R.string.error_email_required));
+            focusView = editTextEmail;
             cancel = true;
         } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
+            editTextEmail.setError(getString(R.string.error_invalid_email));
+            focusView = editTextEmail;
             cancel = true;
         }
-
+        //Will not create user if the input does not fit the criteria
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -134,33 +132,54 @@ public class CreateUserActivity extends AppCompatActivity {
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            this.finish();
+            dbAdapter.open();
+            User user = new User();
+
+            user.setEmail(email);
+            user.setPassword(password);
+            user.setFirstName(firstname);
+            user.setLastName(lastname);
+            user.setCpr(cpr);
+            user.setAge(age);
+
+            dbAdapter.create(user);
+            dbAdapter.close();
+            Toast.makeText(context, "Your user were successfully created", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(context, LoginActivity.class));
         }
     }
- */
+
     private boolean isEmailValid(String email) {
-        if (email.length() < 6){ // X@X.XX as minimum
-            return false;
-        }
-        else if (!email.contains("@")) {
+        // X@X.XX as minimum
+        if (email.length() < 6 || (!email.contains("@"))) {
             return false;
         }
         return true;
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
-    private boolean isFirstNameValid(String password) {
+    private boolean isNameValid(String name) {
+         if(!(name.matches("[a-zA-Z]+")) || name.length() < 2 ){
+             return false;
+         }
+        return true;
+    }
+
+    private boolean isAgeValid(int age) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return age > 4 && age < 100 ;
+    }
+    private boolean isCprValid(String cpr) {
+        if (cpr.length() != 10){
+            return false;
+        }
+        else if(!(cpr.matches("[0-9]+"))){
+            return false;
+        }
+        return true;
     }
 
 }

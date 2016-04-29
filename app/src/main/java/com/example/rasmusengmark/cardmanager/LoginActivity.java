@@ -30,6 +30,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private Button createUser;
     private Context context;
     public static SQLiteAdapter dbHandler;
+    public UserList userList;
     private Long nextId;
 
 
@@ -80,21 +82,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         context = this;
         dbHandler = new SQLiteAdapter(context);
 
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
-
         mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -178,19 +170,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
+        if (TextUtils.isEmpty(password)) {
+            mPasswordView.setError(getString(R.string.error_password_required));
             focusView = mPasswordView;
             cancel = true;
         }
-
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
+            mEmailView.setError(getString(R.string.error_email_required));
             focusView = mEmailView;
             cancel = true;
         }
@@ -199,33 +186,26 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
+
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
+            userList = new UserList(context);
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            this.finish();
+            Long currentID = userList.verifyAccount(email, password);
+            if(!(currentID == 0)) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("userID", currentID);
+                Toast.makeText(context, "You have logged in successfully with ID: " + currentID, Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+                this.finish();
+            }
+            else{
+                showProgress(false);
+                Toast.makeText(context, "Wrong E-mail or Password", Toast.LENGTH_SHORT).show();
+            }
         }
     }
-
-    private boolean isEmailValid(String email) {
-   //     if (email.length() < 5){
-    //        return false;
-   // }
-        if (!email.contains("@")) {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
-    }
-
     /**
      * Shows the progress UI and hides the login form.
      */
@@ -304,7 +284,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mEmailView.setAdapter(adapter);
     }
-
 
     private interface ProfileQuery {
         String[] PROJECTION = {

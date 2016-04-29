@@ -12,7 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,10 +23,20 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private UserList userList;
     private SQLiteAdapter dbHandler;
     private Context context;
 
+    private Long currentID;
+
+    private Button btnDeleteUser;
+
     private TextView textViewEmail;
+    private TextView textViewPassword;
+    private TextView textViewFirstName;
+    private TextView textViewLastName;
+    private TextView textViewAge;
+    private TextView textViewCpr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +46,8 @@ public class MainActivity extends AppCompatActivity
         context = this;
         dbHandler = LoginActivity.dbHandler;
 
+       currentID = getIntent().getExtras().getLong("userID"); //Getting the ID for the user logged in
+        Toast.makeText(context, "ID IN MAINACTIVITY CLASS: " + currentID, Toast.LENGTH_LONG).show();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -148,17 +162,18 @@ public class MainActivity extends AppCompatActivity
             toggle.syncState();
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
-            navigationView.getMenu().getItem(1).setChecked(true);
+            navigationView.getMenu().getItem(2).setChecked(true);
 
+            userList = new UserList(this);
+            User currentUser = userList.getCurrentAccount(currentID); // Getting the user that is logged in now
+            viewAccount(currentUser); //Passes it to viewAccount() that will set the text box
+            btnDeleteUser.setOnClickListener(new View.OnClickListener() {
 
- UserList userList = new UserList(context);
-  int test = userList.getCount();
-User user = new User();
-            String email = user.getEmail();
-            textViewEmail = (TextView) findViewById(R.id.textViewEmail);
-            textViewEmail.setText("lort");
-
-            Toast.makeText(context, "Person added " + test + "_" + email + "_", Toast.LENGTH_SHORT).show();
+                @Override
+                public void onClick(View v) {
+                    userList.deleteUser(currentID);
+                }
+            });
 
 
         } else if (id == R.id.nav_logout) {
@@ -178,4 +193,21 @@ User user = new User();
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-}
+
+    public void viewAccount(User user){
+        btnDeleteUser = (Button) findViewById(R.id.btnDeleteUser);
+        textViewEmail = (TextView) findViewById(R.id.textViewEmail);
+        textViewPassword = (TextView) findViewById(R.id.textViewPassword);
+        textViewFirstName = (TextView) findViewById(R.id.textViewFirstName);
+        textViewLastName = (TextView) findViewById(R.id.textViewLastName);
+        textViewAge = (TextView) findViewById(R.id.textViewAge);
+        textViewCpr = (TextView) findViewById(R.id.textViewCpr);
+
+        textViewEmail.setText(user.getEmail());
+        textViewPassword.setText(user.getPassword());
+        textViewFirstName.setText(user.getFirstName());
+        textViewLastName.setText(user.getLastName());
+        textViewAge.setText(String.valueOf(user.getAge()));
+        textViewCpr.setText(user.getCpr());
+    }
+    }

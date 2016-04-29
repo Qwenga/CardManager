@@ -108,6 +108,15 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textViewAgeLabel"
         android:layout_alignBaseline="@id/textViewAgeLabel"/>
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Account"
+        android:id="@+id/btnDeleteUser"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
     </RelativeLayout>
+
+
 </LinearLayout>

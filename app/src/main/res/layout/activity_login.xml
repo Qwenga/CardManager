@@ -73,14 +73,15 @@
                 android:textStyle="bold" />
 
             <Button
-                style="?android:attr/buttonStyleSmall"
+                style="?android:textAppearanceSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create User"
+                android:text="@string/action_create_user"
                 android:id="@+id/btnCreateUserPanel"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"/>
 
         </LinearLayout>
     </ScrollView>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_ID;
 import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_EMAIL;
@@ -56,6 +57,36 @@ public class UserList extends BaseAdapter {
         dbAdapter.close();
     }
 
+    public Long verifyAccount(String emailInput, String passwordInput){
+        Long ID = 0L;
+        for (User x : users){
+            String email = x.getEmail();
+            String password = x.getPassword();
+            if (email.equals(emailInput) && password.equals(passwordInput)){
+                ID = x.getId();
+                return ID;
+            }
+        }
+        return ID;
+    }
+
+    public User getCurrentAccount(Long userID){
+        User currentUser = null;
+        for (User x : users){
+            Long listID = x.getId();
+            if (listID == userID ){
+                currentUser = x;
+                return currentUser;
+            }
+        }
+        return currentUser;
+    }
+
+    public void deleteUser (Long userID){
+        dbAdapter.open();
+        dbAdapter.delete(userID);
+        dbAdapter.close();
+    }
     @Override
     public int getCount() {
         return users.size();
