@@ -319,7 +319,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     public void createAdminAccount(){
-        if((userList = new UserList(context)) == null) {
+        userList = new UserList(context);
             dbAdapter.open();
             User user = new User();
 
@@ -333,7 +333,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             dbAdapter.create(user);
             dbAdapter.close();
-        }
     }
 }
 

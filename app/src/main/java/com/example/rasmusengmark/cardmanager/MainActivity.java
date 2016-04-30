@@ -1,8 +1,10 @@
 package com.example.rasmusengmark.cardmanager;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity
                 setContentView(R.layout.pickedcard_activity);
             }
         });
+
     }
 
 
@@ -85,8 +88,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
+        //User currentUser = userList.getCurrentAccount(currentID); // Getting the user that is logged in now
+        //setSideBarUser(currentUser); //Passes it to viewAccount() that will set the text box
+
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+
     }
 
     @Override
@@ -111,9 +119,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-       // User currentUser2 = userList.getCurrentAccount(currentID); // Getting the user that is logged in now
-        //setSideBarUser(currentUser2); //Passes it to viewAccount() that will set the text box
 
         if (id == R.id.nav_mycards) {
 
@@ -167,11 +172,26 @@ public class MainActivity extends AppCompatActivity
             userList = new UserList(this);
             User currentUser = userList.getCurrentAccount(currentID); // Getting the user that is logged in now
             viewAccount(currentUser); //Passes it to viewAccount() that will set the text box
+
             btnDeleteUser.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
-                    userList.deleteUser(currentID);
+
+                    AlertDialog show = new AlertDialog.Builder(MainActivity.this)
+                            .setMessage("Are you sure you want to delete your account?")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    userList.deleteUser(currentID);
+                                    Intent homescreen = new Intent(MainActivity.this, LoginActivity.class);
+                                    homescreen.addFlags(getIntent().FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(homescreen);
+                                    MainActivity.this.finish();
+                                }
+                            })
+                            .setNegativeButton("No", null)
+                            .show();
                 }
             });
 
@@ -194,20 +214,20 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-   /** public void setSideBarUser(User user){
+    public void setSideBarUser(User user){
 
-        Toast.makeText(context, "email: " + user.getEmail() + "name: " + user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_LONG).show();
+      //  Toast.makeText(context, "email: " + user.getEmail() + "name: " + user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_LONG).show();
 
         textViewSideEmail = (TextView) findViewById(R.id.email_drawer_lol);
-        textViewSideName = (TextView) findViewById(R.id.name_drawer_lol); <!---- DISSE TO VÆRDIER BLIVER NULL, DE KAN IKKE FINDE drawer_lol ->
+        textViewSideName = (TextView) findViewById(R.id.name_drawer_lol);
 
-        textViewSideEmail.setText("testemail");
-        //textViewSideName.setText("testname");
+        textViewSideEmail.setText(user.getEmail());
+        textViewSideName.setText(user.getFirstName() + " " + user.getLastName());
 
-        user.getEmail()
-        user.getFirstName() + " " + user.getLastName()
+
+
     }
-**/
+
     public void viewAccount(User user){
         btnDeleteUser = (Button) findViewById(R.id.btnDeleteUser);
         textViewEmail = (TextView) findViewById(R.id.textViewEmail);

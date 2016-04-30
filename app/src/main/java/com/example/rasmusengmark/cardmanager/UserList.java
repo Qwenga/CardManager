@@ -38,21 +38,22 @@ public class UserList extends BaseAdapter {
 
         Cursor cursor = dbAdapter.readAll();
 
+        boolean hasFirst = cursor.moveToFirst();
 
-        cursor.moveToFirst();
-
-        do {
-            User user = new User();
-            user.setId(cursor.getLong(cursor.getColumnIndex(USER_ID)));
-            user.setEmail(cursor.getString(cursor.getColumnIndex(USER_EMAIL)));
-            user.setPassword(cursor.getString(cursor.getColumnIndex(USER_PASSWORD)));
-            user.setFirstName(cursor.getString(cursor.getColumnIndex(USER_FIRSTNAME)));
-            user.setLastName(cursor.getString(cursor.getColumnIndex(USER_LASTNAME)));
-            user.setAge(cursor.getInt(cursor.getColumnIndex(USER_AGE)));
-            user.setCpr(cursor.getString(cursor.getColumnIndex(USER_CPR)));
-            users.add(user);
-        }
+        if (hasFirst == true) {
+            do {
+                User user = new User();
+                user.setId(cursor.getLong(cursor.getColumnIndex(USER_ID)));
+                user.setEmail(cursor.getString(cursor.getColumnIndex(USER_EMAIL)));
+                user.setPassword(cursor.getString(cursor.getColumnIndex(USER_PASSWORD)));
+                user.setFirstName(cursor.getString(cursor.getColumnIndex(USER_FIRSTNAME)));
+                user.setLastName(cursor.getString(cursor.getColumnIndex(USER_LASTNAME)));
+                user.setAge(cursor.getInt(cursor.getColumnIndex(USER_AGE)));
+                user.setCpr(cursor.getString(cursor.getColumnIndex(USER_CPR)));
+                users.add(user);
+            }
         while (cursor.moveToNext());
+        }
 
         dbAdapter.close();
     }
