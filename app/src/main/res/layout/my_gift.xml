@@ -15,22 +15,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-            <ImageButton
-                android:layout_width="350dp"
-                android:layout_height="220dp"
-                android:id="@+id/giftcard"
-                android:src="@drawable/giftcard"
-                android:scaleType="fitCenter"
-                android:background="#FFFFFF"
-                android:layout_marginRight="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="10dp"
-
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal"/>
-
             <ImageButton
                 android:layout_width="350dp"
                 android:layout_height="220dp"
@@ -47,23 +31,22 @@
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="center_horizontal"/>
 
-
             <ImageButton
                 android:layout_width="350dp"
                 android:layout_height="220dp"
-                android:id="@+id/plusgift"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/giftcard"
-                android:src="@drawable/ic_plus"
+                android:id="@+id/giftcard"
+                android:src="@drawable/giftcardone"
                 android:scaleType="fitCenter"
-                android:background="#FFFFFF"
+                android:background="#ffffff"
                 android:layout_marginRight="1dp"
                 android:layout_marginLeft="1dp"
                 android:layout_marginTop="10dp"
 
                 android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal" />
+
+
 
 
         </LinearLayout>
