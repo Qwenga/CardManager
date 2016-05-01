@@ -13,6 +13,7 @@
     <string name="error_password_required">You must enter your password</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_wrong_input">Enter valid account information </string>
+    <string name="error_email_taken">This e-mail is already in use </string>
     <string name="error_invalid_name">This is not a valid name</string>
     <string name="error_invalid_cpr">You must enter 10 digits </string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>

@@ -17,6 +17,7 @@ public class CreateUserActivity extends AppCompatActivity {
 
     Context context;
     public static SQLiteAdapter dbAdapter;
+    public UserList userList;
 
     private Button btnCreateUser;
     private EditText editTextEmail;
@@ -120,22 +121,38 @@ public class CreateUserActivity extends AppCompatActivity {
             // form field with an error.
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            dbAdapter.open();
-            User user = new User();
+            userList = new UserList(this);
+            Long currentID = userList.verifyAccount(email, password);
+            if(currentID == 0) {
+                // Show a progress spinner, and kick off a background task to
+                // perform the user login attempt.
+                dbAdapter.open();
+                User user = new User();
 
-            user.setEmail(email);
-            user.setPassword(password);
-            user.setFirstName(firstname);
-            user.setLastName(lastname);
-            user.setCpr(cpr);
-            user.setAge(age);
+                user.setEmail(email);
+                user.setPassword(password);
+                user.setFirstName(firstname);
+                user.setLastName(lastname);
+                user.setCpr(cpr);
+                user.setAge(age);
 
-            dbAdapter.create(user);
-            dbAdapter.close();
-            Toast.makeText(context, "Your user were successfully created", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(context, LoginActivity.class));
+                dbAdapter.create(user);
+                dbAdapter.close();
+                Toast.makeText(context, "Your user were successfully created", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(context, LoginActivity.class));
+
+            } else{
+                editTextEmail.setText("");
+                editTextPassword.setText("");
+                editTextFirstName.setText("");
+                editTextLastName.setText("");
+                editTextAge.setText("");
+                editTextCpr.setText("");
+                editTextEmail.setError(getString(R.string.error_email_taken));
+                focusView = editTextEmail;
+                focusView.requestFocus();
+                Toast.makeText(context, "That E-mail is already in use", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -158,10 +175,6 @@ public class CreateUserActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean isAgeValid(int age) {
-        //TODO: Replace this with your own logic
-        return age > 4 && age < 100 ;
-    }
     private boolean isCprValid(String cpr) {
         if (cpr.length() != 10){
             return false;

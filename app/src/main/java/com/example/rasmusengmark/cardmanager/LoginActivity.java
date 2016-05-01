@@ -101,8 +101,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "We have sent you an e-mail with your password", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                String email = mEmailView.getText().toString();
+                View focusView = mEmailView;
+                if (TextUtils.isEmpty(email)) {
+                    mEmailView.setError(getString(R.string.error_email_required));
+                    focusView.requestFocus();
+
+                } else {
+                    Snackbar.make(view, "We have sent you an e-mail with your password", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
             }
         });
 
@@ -193,6 +201,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             userList = new UserList(context);
+
             showProgress(true);
             Long currentID = userList.verifyAccount(email, password);
             if(!(currentID == 0)) { // If user input is correct

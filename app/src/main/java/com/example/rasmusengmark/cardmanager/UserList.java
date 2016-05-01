@@ -40,7 +40,7 @@ public class UserList extends BaseAdapter {
 
         boolean hasFirst = cursor.moveToFirst();
 
-        if (hasFirst == true) {
+        if (hasFirst == true) { //To test if database is emtpy so we don't get a nullpointer exception
             do {
                 User user = new User();
                 user.setId(cursor.getLong(cursor.getColumnIndex(USER_ID)));
