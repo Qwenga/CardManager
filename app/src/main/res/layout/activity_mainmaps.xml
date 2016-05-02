@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text1"
-        android:text="If you need any help please feel free to contract us"
+        android:text="If you need any help please feel free to contact us"
         android:layout_below="@+id/texttitel"
         android:layout_alignParentStart="true"
         android:textSize="20dp"
