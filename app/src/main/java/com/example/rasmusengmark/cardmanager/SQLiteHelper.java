@@ -15,7 +15,7 @@ import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_AGE;
 import static com.example.rasmusengmark.cardmanager.SQLiteAdapter.USER_CPR;
 
 /**
- * Created by Mikkel on 22-04-2016.
+ * Created by Mikkel on 18-04-2016.
  */
 
 public class SQLiteHelper extends SQLiteOpenHelper {

@@ -1,7 +1,7 @@
 package com.example.rasmusengmark.cardmanager;
 
 /**
- * Created by Mikkel on 19-04-2016.
+ * Created by Mikkel on 09-04-2016.
  */
 public class User {
 

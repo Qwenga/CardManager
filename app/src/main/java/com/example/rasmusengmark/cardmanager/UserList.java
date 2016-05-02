@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Mikkel on 19-04-2016.
+ * Created by Mikkel on 09-04-2016.
  */
 public class UserList extends BaseAdapter {
 
@@ -68,7 +68,7 @@ public class UserList extends BaseAdapter {
         return true;
     }
 
-    public Long verifyAccount(String emailInput, String passwordInput){
+    public Long verifyAccount(String emailInput, String passwordInput){ // Return ID to pass on
         Long ID = 0L;
         for (User x : users){
             String email = x.getEmail();
@@ -143,13 +143,6 @@ public class UserList extends BaseAdapter {
         else {
             holder = (ViewHolder) convertView.getTag();
         }
-
-       /* if ( position % 2 == 0 ){
-            convertView.setBackgroundColor(parent.getResources().getColor(android.R.color.holo_green_light));
-        }
-        else {
-            convertView.setBackgroundColor(parent.getResources().getColor(android.R.color.background_light));
-        }*/
 
         return convertView;
     }

@@ -65,20 +65,12 @@ public class MainActivity extends AppCompatActivity
         setSideBarUser(currentUser, header); //Passes it to viewAccount() that will set the text box
         navigationView.getMenu().getItem(0).setChecked(true);
 
-
-
-
-
         ImageButton button= (ImageButton) findViewById(R.id.clubmatas);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setContentView(R.layout.pickedcard_activity);
             }
         });
-
-        //View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
-
-
     }
 
 
@@ -235,8 +227,6 @@ public class MainActivity extends AppCompatActivity
         textViewSideEmail.setText(user.getEmail());
         textViewSideName.setText(user.getFirstName() + " " + user.getLastName());
 
-
-
     }
 
     public void viewAccount(User user){
@@ -248,7 +238,7 @@ public class MainActivity extends AppCompatActivity
         textViewLastName = (TextView) findViewById(R.id.textViewLastName);
         textViewCpr = (TextView) findViewById(R.id.textViewCpr);
 
-        textViewEmail.setText(user.getId().toString());
+        textViewId.setText(user.getId().toString());
         textViewEmail.setText(user.getEmail());
         textViewPassword.setText(user.getPassword());
         textViewFirstName.setText(user.getFirstName());
