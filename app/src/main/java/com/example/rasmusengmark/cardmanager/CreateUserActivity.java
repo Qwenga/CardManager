@@ -24,7 +24,6 @@ public class CreateUserActivity extends AppCompatActivity {
     private EditText editTextPassword;
     private EditText editTextFirstName;
     private EditText editTextLastName;
-    private EditText editTextAge;
     private EditText editTextCpr;
 
     @Override
@@ -67,8 +66,7 @@ public class CreateUserActivity extends AppCompatActivity {
                 String firstname =  editTextFirstName.getText().toString();
                 String lastname =  editTextLastName.getText().toString();
                 String cpr = editTextCpr.getText().toString();
-               // int age = Integer.parseInt(editTextAge.getText().toString());
-                int age = 10;
+                int age = 30; // Age has been removed. Keeping it for future developments
 
                 validateInput(email, password, firstname, lastname, cpr, age);
             }
@@ -120,8 +118,8 @@ public class CreateUserActivity extends AppCompatActivity {
             focusView.requestFocus();
         } else {
             userList = new UserList(this);
-            Long currentID = userList.verifyAccount(email, password);
-            if(currentID == 0) {
+
+            if(userList.checkEmail(email)) {
                 // Show a progress spinner, and kick off a background task to
                 // perform the user login attempt.
                 dbAdapter.open();
@@ -144,11 +142,9 @@ public class CreateUserActivity extends AppCompatActivity {
                 editTextPassword.setText("");
                 editTextFirstName.setText("");
                 editTextLastName.setText("");
-                editTextAge.setText("");
                 editTextCpr.setText("");
                 editTextEmail.setError(getString(R.string.error_email_taken));
-                focusView = editTextEmail;
-                focusView.requestFocus();
+                editTextEmail.requestFocus();
                 Toast.makeText(context, "That E-mail is already in use", Toast.LENGTH_SHORT).show();
             }
         }

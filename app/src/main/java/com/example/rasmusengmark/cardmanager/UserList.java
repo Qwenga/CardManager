@@ -58,6 +58,16 @@ public class UserList extends BaseAdapter {
         dbAdapter.close();
     }
 
+    public Boolean checkEmail(String emailInput){
+        for (User x : users){
+            String email = x.getEmail();
+            if (email.equals(emailInput)){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public Long verifyAccount(String emailInput, String passwordInput){
         Long ID = 0L;
         for (User x : users){
@@ -116,7 +126,6 @@ public class UserList extends BaseAdapter {
             holder.textViewPassword = (TextView) convertView.findViewById(R.id.textViewPassword);
             holder.textViewFirstName = (TextView) convertView.findViewById(R.id.textViewFirstName);
             holder.textViewLastName = (TextView) convertView.findViewById(R.id.textViewLastName);
-            holder.textViewAge = (TextView) convertView.findViewById(R.id.textViewAge);
             holder.textViewCpr = (TextView) convertView.findViewById(R.id.textViewCpr);
 
             convertView.setTag(holder);

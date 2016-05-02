@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -40,22 +41,10 @@ import static android.Manifest.permission.READ_CONTACTS;
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**
-     * Id to identity READ_CONTACTS permission request.
-     */
-    private static final int REQUEST_READ_CONTACTS = 0;
-
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-    /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     //private UserLoginTask mAuthTask = null;
-
+    private UserLoginTask mAuthTask = null;
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
@@ -96,7 +85,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
 
         setSnackBarListener();
-       // createAdminAccount();
         toCreateUserPanel(); //Setting up the button and actions
     }
 
@@ -106,6 +94,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
+        if (mAuthTask != null) {
+            return;
+        }
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
@@ -286,21 +277,50 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
     }
 
-    public void createAdminAccount(){
-        userList = new UserList(context);
-            dbAdapter.open();
-            User user = new User();
+    public class UserLoginTask extends AsyncTask<Void, Void, Long> {
 
-            user.setId(1L);
-            user.setEmail("admin");
-            user.setPassword("admin");
-            user.setFirstName("admin");
-            user.setLastName("nimda");
-            user.setCpr("1010101010");
-            user.setAge(100);
+        private final String email;
+        private final String password;
 
-            dbAdapter.create(user);
-            dbAdapter.close();
+        UserLoginTask(String email_, String password_) {
+            email = email_;
+            password = password_;
+        }
+
+        @Override
+        protected Long doInBackground(Void... params) {
+            userList = new UserList(context);
+
+            Long currentID = userList.verifyAccount(email, password);
+
+            return currentID;
+        }
+
+        @Override
+        protected void onPostExecute(final Long currentID) {
+            mAuthTask = null;
+            showProgress(false);
+
+            if (!(currentID == 0)) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("userID", currentID);
+                Toast.makeText(context, "You have logged in successfully", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+                LoginActivity.this.finish();
+            } else {
+                mPasswordView.setText("");
+                mPasswordView.setError(getString(R.string.error_wrong_input));
+                mEmailView.setError(getString(R.string.error_wrong_input));
+                mPasswordView.requestFocus();
+                Toast.makeText(context, "Wrong e-mail or password", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
+            mAuthTask = null;
+            showProgress(false);
+        }
     }
 }
 

@@ -29,11 +29,11 @@ public class MainActivity extends AppCompatActivity
 
     private Button btnDeleteUser;
 
+    private TextView textViewId;
     private TextView textViewEmail;
     private TextView textViewPassword;
     private TextView textViewFirstName;
     private TextView textViewLastName;
-    private TextView textViewAge;
     private TextView textViewCpr;
 
     private TextView textViewSideEmail;
@@ -241,19 +241,18 @@ public class MainActivity extends AppCompatActivity
 
     public void viewAccount(User user){
         btnDeleteUser = (Button) findViewById(R.id.btnDeleteUser);
+        textViewId = (TextView) findViewById(R.id.textViewId);
         textViewEmail = (TextView) findViewById(R.id.textViewEmail);
         textViewPassword = (TextView) findViewById(R.id.textViewPassword);
         textViewFirstName = (TextView) findViewById(R.id.textViewFirstName);
         textViewLastName = (TextView) findViewById(R.id.textViewLastName);
-        textViewAge = (TextView) findViewById(R.id.textViewAge);
         textViewCpr = (TextView) findViewById(R.id.textViewCpr);
 
-
+        textViewEmail.setText(user.getId().toString());
         textViewEmail.setText(user.getEmail());
         textViewPassword.setText(user.getPassword());
         textViewFirstName.setText(user.getFirstName());
         textViewLastName.setText(user.getLastName());
-        textViewAge.setText(String.valueOf(user.getAge()));
         textViewCpr.setText(user.getCpr());
     }
     }
