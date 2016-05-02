@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome to CardManager"
+                android:text="Welcome to Card Manager"
                 android:layout_gravity="center_horizontal"
                 android:textSize="36dp"
                 android:layout_marginTop="15dp"/>
@@ -44,7 +44,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="We are here to make you're live easier and yor wallet lighter, by taking all of you're cards out of you're wallet and into you're phone."
+                android:text=""
                 android:layout_gravity="center_horizontal"
                 android:textSize="20dp"
                 android:layout_marginTop="15dp"/>

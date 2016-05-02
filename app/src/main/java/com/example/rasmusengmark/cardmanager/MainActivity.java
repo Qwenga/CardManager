@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
             navigationView.getMenu().getItem(3).setChecked(true);
-
+            currentID = 0L;
             Intent homescreen = new Intent(this,LoginActivity.class);
             homescreen.addFlags(getIntent().FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homescreen);

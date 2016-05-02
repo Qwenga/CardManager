@@ -46,7 +46,6 @@ public class CreateUserActivity extends AppCompatActivity {
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         editTextFirstName = (EditText) findViewById(R.id.editTextFirstName);
         editTextLastName = (EditText) findViewById(R.id.editTextLastName);
-        editTextAge = (EditText) findViewById(R.id.editTextAge);
         editTextCpr = (EditText) findViewById(R.id.editTextCpr);
         btnCreateUser = (Button) findViewById(R.id.btnCreateUser);
 
@@ -54,7 +53,6 @@ public class CreateUserActivity extends AppCompatActivity {
         editTextPassword.setError(null);
         editTextFirstName.setError(null);
         editTextLastName.setError(null);
-        editTextAge.setError(null);
         editTextCpr.setError(null);
     }
 

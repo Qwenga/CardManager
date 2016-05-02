@@ -99,13 +99,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp">
 
-    <EditText
-        android:id="@+id/editTextAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Age"
-        android:inputType="number" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -116,14 +109,6 @@
         android:id="@+id/view"
         android:layout_alignTop="@+id/view2"
         android:layout_alignStart="@+id/view6">
-
-    <EditText
-        android:id="@+id/editTextCpr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="CPR Number"
-        android:inputType="number" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -150,10 +135,20 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create a user by filling out the boxes below"
+        android:text="Please insert your personal details below "
         android:id="@+id/textView"
         android:layout_above="@+id/view4"
         android:layout_centerHorizontal="true"
         android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/editTextCpr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="CPR Number"
+        android:inputType="number"
+        android:layout_alignTop="@+id/view2"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
