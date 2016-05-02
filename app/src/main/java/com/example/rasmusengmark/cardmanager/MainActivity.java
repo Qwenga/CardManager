@@ -60,7 +60,12 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header=navigationView.getHeaderView(0);
+        User currentUser = userList.getCurrentAccount(currentID); // Getting the user that is logged in now
+        setSideBarUser(currentUser, header); //Passes it to viewAccount() that will set the text box
         navigationView.getMenu().getItem(0).setChecked(true);
+
+
 
 
 
@@ -70,6 +75,9 @@ public class MainActivity extends AppCompatActivity
                 setContentView(R.layout.pickedcard_activity);
             }
         });
+
+        //View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
+
 
     }
 
@@ -88,9 +96,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-
-        //User currentUser = userList.getCurrentAccount(currentID); // Getting the user that is logged in now
-        //setSideBarUser(currentUser); //Passes it to viewAccount() that will set the text box
 
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -134,6 +139,9 @@ public class MainActivity extends AppCompatActivity
             toggle.syncState();
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
+            View header=navigationView.getHeaderView(0);
+            User currentUser = userList.getCurrentAccount(currentID); // Getting the user that is logged in now
+            setSideBarUser(currentUser, header); //Passes it to viewAccount() that will set the text box
             navigationView.getMenu().getItem(0).setChecked(true);
 
 
@@ -151,6 +159,9 @@ public class MainActivity extends AppCompatActivity
             toggle.syncState();
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
+            View header=navigationView.getHeaderView(0);
+            User currentUser = userList.getCurrentAccount(currentID); // Getting the user that is logged in now
+            setSideBarUser(currentUser, header); //Passes it to viewAccount() that will set the text box
             navigationView.getMenu().getItem(1).setChecked(true);
 
         } else if (id == R.id.nav_account) {
@@ -167,10 +178,12 @@ public class MainActivity extends AppCompatActivity
             toggle.syncState();
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
+            View header=navigationView.getHeaderView(0);
+            User currentUser = userList.getCurrentAccount(currentID); // Getting the user that is logged in now
+            setSideBarUser(currentUser, header); //Passes it to viewAccount() that will set the text box
             navigationView.getMenu().getItem(2).setChecked(true);
 
             userList = new UserList(this);
-            User currentUser = userList.getCurrentAccount(currentID); // Getting the user that is logged in now
             viewAccount(currentUser); //Passes it to viewAccount() that will set the text box
 
             btnDeleteUser.setOnClickListener(new View.OnClickListener() {
@@ -214,12 +227,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void setSideBarUser(User user){
+    public void setSideBarUser(User user, View headerView){
 
-      //  Toast.makeText(context, "email: " + user.getEmail() + "name: " + user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_LONG).show();
-
-        textViewSideEmail = (TextView) findViewById(R.id.email_drawer_lol);
-        textViewSideName = (TextView) findViewById(R.id.name_drawer_lol);
+        textViewSideEmail = (TextView) headerView.findViewById(R.id.email_drawer_lol);
+        textViewSideName = (TextView) headerView.findViewById(R.id.name_drawer_lol);
 
         textViewSideEmail.setText(user.getEmail());
         textViewSideName.setText(user.getFirstName() + " " + user.getLastName());
