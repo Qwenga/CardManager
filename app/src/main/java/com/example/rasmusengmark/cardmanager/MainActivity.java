@@ -1,10 +1,14 @@
 package com.example.rasmusengmark.cardmanager;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,7 +20,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     private Long currentID;
 
     private Button btnDeleteUser;
+
+    private ImageView imageCode;
 
     private TextView textViewId;
     private TextView textViewEmail;
@@ -44,6 +55,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final Activity activity = this;
         context = this;
         dbHandler = LoginActivity.dbAdapter;
         userList = new UserList(this);
@@ -65,10 +77,24 @@ public class MainActivity extends AppCompatActivity
         setSideBarUser(currentUser, header); //Passes it to viewAccount() that will set the text box
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        ImageButton button= (ImageButton) findViewById(R.id.clubmatas);
+        ImageButton button = (ImageButton) findViewById(R.id.clubmatas);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setContentView(R.layout.pickedcard_activity);
+            }
+        });
+
+        ImageButton addCard = (ImageButton) findViewById(R.id.pluscard);
+        addCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(activity);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrator.setPrompt("[Scan the code on your loyalty card]");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(true);
+                integrator.setBarcodeImageEnabled(true);
+                integrator.initiateScan();
             }
         });
     }
@@ -245,4 +271,26 @@ public class MainActivity extends AppCompatActivity
         textViewLastName.setText(user.getLastName());
         textViewCpr.setText(user.getCpr());
     }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Log.d("MainActivity", "Cancelled scan");
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                Log.d("MainActivity", "Scanned");
+                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+
+                setContentView(R.layout.pickedcard_activity);
+                imageCode = (ImageView) findViewById(R.id.imageCode);
+                Bitmap myBitmap = BitmapFactory.decodeFile(result.getBarcodeImagePath());
+                imageCode.setImageBitmap(myBitmap);
+
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
+
+}
